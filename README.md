@@ -52,8 +52,27 @@ Built with **Node.js, Express, MongoDB, and EJS**, featuring authentication, ima
 ## ⚡ Getting Started  
 
 ### 1️⃣ Clone the repository  
-```sh
-git clone https://github.com/YOUR_USERNAME/AIRHUB.git
+
+git clone https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-
 cd AIRHUB
 
 npm install
+
+## 📌 Useful Commands
+Initialize project: npm init -y
+Install dependencies: npm install
+Run server with nodemon: npx nodemon app.js
+
+
+## 🌐 Demo
+
+Take a look at your app in action:  
+👉 [Live Demo — Listings Page](https://wanderlust-airbnb-clone-full-stack-web.onrender.com/listings)  
+
+## 🌟 Future Improvements
+Improve maps feature
+Implement advanced search & filters
+Improve UI/UX with React frontend
+dd booking & payment system (Stripe/PayPal)
+
+```sh
