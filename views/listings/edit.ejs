@@ -1,0 +1,77 @@
+<% layout ('layouts/boilerplate') %>
+<% if(success && success.length > 0) { %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <%= success %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>
+
+  <body>
+    <div class="row justify-content-center mt-3">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <h3>Edit your Listing</h3>
+        <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+          <div class="mb-1">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control"  required/>
+          </div>
+          <div class="mb-1">
+            <label for="title" class="form-label">Description</label>
+            <textarea class="form-control" name="listing[description]" required> <%= listing.description %></textarea>
+            <div class="invalid-feedback">
+            Description cannot be blank.
+          </div>
+          </div>
+
+          <div class="mb-3">
+            Original Image:<br>
+            <img src="<%= orignalImageUrl %>" alt="">
+          </div>
+
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input name="listing[image]" class="form-control" type="file" />
+            <div class="invalid-feedback">
+            
+          </div>
+          </div>
+
+
+          <div class="row">
+          <div class="col-md-8 mb-1">
+            <label for="title" class="form-label">Price</label>
+            
+            <input name="listing[price]" class="form-control" value="<%= listing.price %>" type="number" required />
+            <div class="invalid-feedback">
+                price should be valid
+              </div>
+            
+          </div>
+          <div class="col-md-4 mb-1">
+            <label for="title" class="form-label">Country</label>
+            <input name="listing[country]" class="form-control" value="<%= listing.country %>" type="text" required />
+            <div class="invalid-feedback">
+              Country cannot be blank.
+            </div>
+          </div>
+          </div>
+          <div class="mb-1">
+            <label for="title" class="form-label">Location</label>
+            <input name="listing[location]" class="form-control" value="<%= listing.location %>" type="text" required />
+             <div class="invalid-feedback">
+            Location cannot be blank
+          </div>
+          </div>
+          <br>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="/listings" class="btn btn-secondary me-md-2">Cancel</a>
+          <button type="submit" class="btn btn-dark add-btn ">ADD</button>
+          <br>
+         
+        </div>
+          <br>
+        </form>
+      </div>
+    </div>
+  </body>

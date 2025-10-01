@@ -1,0 +1,133 @@
+<style>
+  .search-btn{
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .search-btn:hover{
+    background-color: #fe424d;
+    color: #fff;
+  } 
+  .search-btn i{
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-input{
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5 3rem;
+    font-size: 1rem;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <!-- Left: Brand + Explore -->
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+      <a class="nav-link" href="/listings">Explore</a>
+    </div>
+
+    <!-- Toggler for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        
+        <!-- Left spacer (optional) -->
+        <div class="d-flex align-items-center flex-fill">
+          <!-- Already have brand + explore on left -->
+        </div>
+
+        <!-- Center: Search -->
+        <div class="d-flex justify-content-center flex-fill">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2 search-input" type="search" placeholder="Search destinations" aria-label="Search" />
+            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          </form>
+        </div>
+
+        <!-- Right: User Links -->
+        <div class="d-flex align-items-center justify-content-end flex-fill">
+          <a class="nav-link" href="/listings/new">Add Listing</a>
+          <% if(!currUser){ %>
+            <a class="nav-link ms-2" href="/signup"><b>Sign Up</b></a>
+            <a class="nav-link ms-2" href="/login"><b>Log in</b></a>
+          <% } %>
+          <% if(currUser) { %>
+            <a class="nav-link ms-2" href="/logout"><b>Logout</b></a>
+          <% } %>
+          <!-- Theme Toggle Button -->
+          <button id="theme-toggle" class="btn btn-outline-secondary ms-2" title="Toggle theme">
+            <i class="fa fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Apply theme from localStorage on page load
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-theme');
+  }
+
+  document.getElementById('theme-toggle').addEventListener('click', function() {
+    const body = document.body;
+    const isDark = body.classList.toggle('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    document.querySelectorAll('.navbar').forEach(el => {
+      el.classList.toggle('dark-theme', isDark);
+    });
+    document.querySelectorAll('.card').forEach(el => {
+      el.classList.toggle('dark-theme', isDark);
+    });
+    document.querySelectorAll('.listing-card').forEach(el => {
+      el.classList.toggle('dark-theme', isDark);
+    });
+    document.querySelectorAll('.nav-link').forEach(el => {
+      el.classList.toggle('dark-theme', isDark);
+    });
+    document.querySelectorAll('.card-body').forEach(el => {
+      el.classList.toggle('dark-theme', isDark);
+    });
+    document.querySelectorAll('.card-text').forEach(el => {
+      el.classList.toggle('dark-theme', isDark);
+    });
+    document.querySelectorAll('.f-info').forEach(el => {
+      el.classList.toggle('dark-theme', isDark);
+    });
+  });
+
+  // Also apply dark-theme classes to elements on page load
+  window.addEventListener('DOMContentLoaded', function() {
+    if (document.body.classList.contains('dark-theme')) {
+      document.querySelectorAll('.navbar').forEach(el => {
+        el.classList.add('dark-theme');
+      });
+      document.querySelectorAll('.card').forEach(el => {
+        el.classList.add('dark-theme');
+      });
+      document.querySelectorAll('.listing-card').forEach(el => {
+        el.classList.add('dark-theme');
+      });
+      document.querySelectorAll('.nav-link').forEach(el => {
+        el.classList.add('dark-theme');
+      });
+      document.querySelectorAll('.card-body').forEach(el => {
+        el.classList.add('dark-theme');
+      });
+      document.querySelectorAll('.card-text').forEach(el => {
+        el.classList.add('dark-theme');
+      });
+      document.querySelectorAll('.f-info').forEach(el => {
+        el.classList.add('dark-theme');
+      });
+    }
+  });
+</script>
