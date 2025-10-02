@@ -1,4 +1,4 @@
-# 🌍 AIRHUB  
+# 🌍 AIRBNB  
 
 A **full-stack web application** for listing and discovering places to stay, inspired by **Airbnb**.  
 Built with **Node.js, Express, MongoDB, and EJS**, featuring authentication, image uploads, maps, and reviews.  
