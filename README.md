@@ -39,10 +39,9 @@ Built with **Node.js, Express, MongoDB, and EJS**, featuring authentication, ima
 
 ---
 ## 🛠️ Technologies & Packages Used:
-
--**MongoDB**
--**Express.js**
--**Node.js**
+- **MongoDB**
+- **Express.js**
+- **Node.js**
 -**Passport.js for Authentication**
 -**Cloudinary for Image Storage**
 -**Connect Flash for Flash Messages**
