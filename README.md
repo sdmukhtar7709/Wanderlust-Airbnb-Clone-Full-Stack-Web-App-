@@ -42,19 +42,19 @@ Built with **Node.js, Express, MongoDB, and EJS**, featuring authentication, ima
 - **MongoDB**
 - **Express.js**
 - **Node.js**
--**Passport.js for Authentication**
--**Cloudinary for Image Storage**
--**Connect Flash for Flash Messages**
--**Connect Mongo for Session Storage**
--**Cookie Parser for Parsing Cookies**
--**Dotenv for Environment Variables**
--**EJS for Template Rendering**
--**Express Session for Session Handling**
--**Joi for Data Validation**
--**Mongoose for MongoDB Object Modeling**
--**Multer for File Uploads**
--**Passport Local for Local Authentication**
--**Passport Local Mongoose for Mongoose-Specific Authentication**
+- **Passport.js for Authentication**
+- **Cloudinary for Image Storage**
+- **Connect Flash for Flash Messages**
+- **Connect Mongo for Session Storage**
+- **Cookie Parser for Parsing Cookies**
+- **Dotenv for Environment Variables**
+- **EJS for Template Rendering**
+- **Express Session for Session Handling**
+- **Joi for Data Validation**
+- **Mongoose for MongoDB Object Modeling**
+- **Multer for File Uploads**
+- **Passport Local for Local Authentication**
+- **Passport Local Mongoose for Mongoose-Specific Authentication**
 ---
 
 
