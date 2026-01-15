@@ -57,6 +57,60 @@ Built with **Node.js, Express, MongoDB, and EJS**, featuring authentication, ima
 - **Passport Local Mongoose for Mongoose-Specific Authentication**
 ---
 
+## 📁 Project Structure
+
+```
+AIRHUB/
+├── app.js
+├── cloudConfig.js
+├── cloudinary.js
+├── middleware.js
+├── package.json
+├── schema.js
+├── controllers/
+│   ├── listings.js
+│   ├── reviews.js
+│   └── users.js
+├── init/
+│   ├── data.js
+│   └── index.js
+├── models/
+│   ├── listing.js
+│   ├── review.js
+│   └── user.js
+├── public/
+│   ├── css/
+│   │   ├── rating.css
+│   │   └── style.css
+│   └── js/
+│       ├── .js
+│       ├── script.js
+│       └── search-listings.js
+├── routes/
+│   ├── listing.js
+│   ├── review.js
+│   └── user.js
+├── utils/
+│   ├── ExpressError.js
+│   └── wrapAsync.js
+└── views/
+	├── error.ejs
+	├── includes/
+	│   ├── flash.ejs
+	│   ├── footer.ejs
+	│   └── navbar.ejs
+	├── layouts/
+	│   └── boilerplate.ejs
+	├── listings/
+	│   ├── edit.ejs
+	│   ├── index.ejs
+	│   ├── new.ejs
+	│   └── show.ejs
+	└── users/
+		├── login.ejs
+		└── signup.ejs
+```
+
 
 ## 📸 Screenshots  
 
