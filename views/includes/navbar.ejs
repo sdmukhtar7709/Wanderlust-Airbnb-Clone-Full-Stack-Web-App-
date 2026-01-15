@@ -54,22 +54,37 @@
         <!-- Right: User Links -->
         <div class="d-flex align-items-center justify-content-end flex-fill">
           <a class="nav-link" href="/listings/new">Add Listing</a>
-          <% if(!currUser){ %>
-            <a class="nav-link ms-2" href="/signup"><b>Sign Up</b></a>
-            <a class="nav-link ms-2" href="/login"><b>Log in</b></a>
-          <% } %>
-          <% if(currUser) { %>
-            <a class="nav-link ms-2" href="/logout"><b>Logout</b></a>
-          <% } %>
-          <!-- Theme Toggle Button -->
-          <button id="theme-toggle" class="btn btn-outline-secondary ms-2" title="Toggle theme">
-            <i class="fa fa-moon"></i>
+          <button class="btn btn-outline-secondary ms-2 hamburger-btn" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#userSidebar" aria-controls="userSidebar" aria-label="Open user menu">
+            <i class="fa-solid fa-bars"></i>
           </button>
         </div>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="userSidebarLabel">Account</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column gap-2">
+    <a class="btn btn-outline-dark w-100" href="/listings">Home</a>
+    <% if(!currUser){ %>
+      <a class="btn btn-outline-dark w-100" href="/login">Log in</a>
+      <a class="btn btn-dark w-100" href="/signup">Register</a>
+    <% } %>
+    <% if(currUser) { %>
+      <a class="btn btn-outline-dark w-100" href="/logout">Logout</a>
+    <% } %>
+    <hr class="my-2">
+    <button id="theme-toggle" class="btn btn-outline-secondary w-100" title="Toggle theme">
+      <i class="fa fa-moon me-1"></i> Theme
+    </button>
+  </div>
+</div>
 
 <script>
   // Apply theme from localStorage on page load

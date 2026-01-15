@@ -11,7 +11,14 @@ body {
 
 .navbar {
   height: 5rem;
-  background-color: white;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.navbar .container-fluid {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .fa-compass {
@@ -19,8 +26,77 @@ body {
   font-size: 2rem;
 }
 
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .nav-link {
   color: #222222 !important;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #fe424d !important;
+}
+
+.search-input {
+  border-radius: 999px !important;
+  padding: 0.55rem 1.2rem !important;
+  border: 1px solid #e5e7eb !important;
+  min-width: 260px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.search-input:focus {
+  border-color: #fe424d !important;
+  box-shadow: 0 0 0 0.2rem rgba(254, 66, 77, 0.2);
+}
+
+.search-btn {
+  border-radius: 999px !important;
+  padding: 0.45rem 1rem !important;
+  background-color: #fe424d !important;
+  border: none !important;
+  box-shadow: 0 6px 16px rgba(254, 66, 77, 0.25);
+}
+
+.search-btn:hover {
+  background-color: #f6344f !important;
+}
+
+.hamburger-btn {
+  border-radius: 999px;
+  padding: 0.4rem 0.65rem;
+  border-color: #e5e7eb;
+}
+}
+
+.offcanvas {
+  width: 280px;
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.offcanvas-body .btn {
+  border-radius: 0.75rem;
+}
+
+@media (max-width: 991.98px) {
+  .navbar {
+    height: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .search-input {
+    min-width: 200px;
+  }
 }
 
 .f-info-links a {

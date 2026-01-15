@@ -102,18 +102,22 @@ app.use("/", userRouter);
 
 
 
-// Connect to MongoDB
-main()
-  .then(() => {
-    console.log("Connected to DB");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-async function main() {
-  await mongoose.connect(dbUrl|| MONGO_URL);
+// Connect to MongoDB with fallback to local if primary fails
+async function connectDB() {
+  try {
+    await mongoose.connect(dbUrl);
+    console.log("Connected to DB (primary)");
+  } catch (err) {
+    console.error("Primary DB connection failed:", err.message);
+    console.log("Falling back to local MongoDB...");
+    await mongoose.connect(MONGO_URL);
+    console.log("Connected to DB (local fallback)");
+  }
 }
+
+connectDB().catch((err) => {
+  console.error("DB connection error:", err);
+});
 
 // Setup
 app.engine("ejs", ejsMate);

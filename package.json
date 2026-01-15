@@ -1,18 +1,18 @@
 {
   "engine": {
     "node": "22.17.0"
-
   },
   "name": "airhub",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
@@ -32,5 +32,15 @@
     "passport-local-mongoose": "^8.0.0",
     "path-to-regexp": "^6.2.1",
     "uuid": "^13.0.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-/issues"
+  },
+  "homepage": "https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-#readme",
+  "description": ""
 }

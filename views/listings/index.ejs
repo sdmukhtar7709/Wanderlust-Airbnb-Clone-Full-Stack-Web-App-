@@ -98,7 +98,7 @@
 <% if (allListings.length === 0) { %>
   <div class="alert alert-info mt-4">No listings found.</div>
 <% } else { %>
-  <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 mt-3">
+  <div id="listing-grid" class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1 mt-3">
     <% for (let listing of allListings) { %>
       <div class="col mb-4">
         <a href="/listings/<%= listing._id %>" class="listing-links text-decoration-none">

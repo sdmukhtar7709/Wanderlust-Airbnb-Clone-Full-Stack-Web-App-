@@ -1,37 +1,44 @@
 document.addEventListener('DOMContentLoaded', function() {
   const searchInput = document.querySelector('.search-input');
-  const listingsContainer = document.querySelector('.listing-links');
+  const searchForm = searchInput ? searchInput.closest('form') : null;
+  const listingsContainer = document.querySelector('#listing-grid');
 
   if (!searchInput || !listingsContainer) return;
 
-  // Store original order of cards
-  const originalCards = Array.from(listingsContainer.children);
+  if (searchForm) {
+    searchForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+    });
+  }
+
+  // Store original order of listing columns
+  const originalItems = Array.from(listingsContainer.children);
 
   searchInput.addEventListener('input', function() {
     const query = searchInput.value.trim().toLowerCase();
 
     if (!query) {
-      // Reset to original order if search is empty
       listingsContainer.innerHTML = '';
-      originalCards.forEach(card => listingsContainer.appendChild(card));
+      originalItems.forEach(item => listingsContainer.appendChild(item));
       return;
     }
 
-    const cards = Array.from(listingsContainer.querySelectorAll('.card'));
+    const items = Array.from(listingsContainer.children);
     const matching = [];
     const nonMatching = [];
 
-    cards.forEach(card => {
-      const text = card.textContent.toLowerCase();
+    items.forEach(item => {
+      const card = item.querySelector('.card');
+      const text = card ? card.textContent.toLowerCase() : '';
       if (text.includes(query)) {
-        matching.push(card);
+        matching.push(item);
       } else {
-        nonMatching.push(card);
+        nonMatching.push(item);
       }
     });
 
     listingsContainer.innerHTML = '';
-    matching.forEach(card => listingsContainer.appendChild(card));
-    nonMatching.forEach(card => listingsContainer.appendChild(card));
+    matching.forEach(item => listingsContainer.appendChild(item));
+    nonMatching.forEach(item => listingsContainer.appendChild(item));
   });
 });
