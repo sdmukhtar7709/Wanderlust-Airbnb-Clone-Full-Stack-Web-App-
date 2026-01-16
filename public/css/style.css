@@ -3,10 +3,14 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #f6f6f6;
 }
 
 .container {
   flex: 1;
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .navbar {
@@ -73,7 +77,7 @@ body {
   padding: 0.4rem 0.65rem;
   border-color: #e5e7eb;
 }
-}
+
 
 .offcanvas {
   width: 280px;
@@ -133,13 +137,71 @@ body {
 }
 
 .f-info {
-  height: 8rem;
+  min-height: 7rem;
   text-align: center;
   display: flex;
-  background-color: #ebebeb;
+  background: #111827;
+  color: #f9fafb;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: space-evenly;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.2rem 1rem;
+  border-top: 1px solid #1f2937;
+}
+
+footer {
+  margin-top: 2.5rem;
+}
+
+.f-info-links {
+  gap: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.f-info-links a {
+  color: #e5e7eb;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.f-info-links a:hover {
+  color: #fe424d;
+  text-decoration: none;
+}
+
+.f-info-socials {
+  gap: 0.9rem;
+}
+
+.f-info-socials i {
+  margin-right: 0;
+  font-size: 1.35rem;
+  color: #e5e7eb;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.f-info-socials i:hover {
+  color: #fe424d;
+  transform: translateY(-2px);
+}
+
+.f-info-brand {
+  font-size: 0.95rem;
+  color: #f3f4f6;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 575.98px) {
+  .f-info {
+    gap: 0.4rem;
+  }
+
+  .f-info-links {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
 }
 
 /* ✅ Airbnb-style listing cards */
@@ -150,28 +212,29 @@ body {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   background: #fff;
   height: 100%;
-  border-radius: 2rem;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .listing-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.16);
 }
 
 .card-img-top {
-  height: 220px !important; /* taller, consistent image */
+  height: 190px !important;
   width: 100% !important;
   object-fit: cover !important;
-  border-radius: 1rem 1rem 1rem 1rem !important;
+  border-radius: 1rem !important;
 }
 
 .card-body {
-  padding: 0.9rem 1rem !important;
-  font-size: 0.95rem;
+  padding: 0.75rem 0.85rem !important;
+  font-size: 0.92rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 2rem 2rem 2rem 2rem !important;
+  border-radius: 0 0 1rem 1rem !important;
 
 }
 
@@ -201,6 +264,67 @@ body {
 .card-img-overlay:hover {
   opacity: 1;
   transition: all 0.3s ease-in-out;
+}
+
+/* Home page full-width grid (remove side space) */
+#listing-grid {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  row-gap: 1rem;
+}
+
+#listing-grid .col {
+  padding-left: 0.75rem !important;
+  padding-right: 0.75rem !important;
+}
+
+/* Airbnb-like badge and heart */
+.listing-card::before {
+  content: "Guest favourite";
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: #ffffff;
+  color: #111;
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+.listing-card::after {
+  content: "♡";
+  position: absolute;
+  top: 0.55rem;
+  right: 0.65rem;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  font-size: 1.1rem;
+  color: #222;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+/* Tighter title and price like Airbnb */
+.card-text b {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.card-text span {
+  font-weight: 600;
+  color: #222;
+  font-size: 0.9rem;
 }
 
 /* //new page */
