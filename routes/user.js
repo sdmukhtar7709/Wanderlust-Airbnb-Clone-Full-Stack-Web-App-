@@ -3,18 +3,18 @@ const router = express.Router();
 const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
-const {saveRedirectUrl}=require("../middleware.js");
+const {saveRedirectUrl, isLoggedIn}=require("../middleware.js");
 const userController=require("../controllers/users.js");
 router.get("/signup", (req, res) => {
     res.render("users/signup.ejs");
 });
 
-  router
+router
   .route("/signup")
   .get(userController.renderSignupForm)
   .post(wrapAsync(userController.signup));
 
-  router.route("/login")
+router.route("/login")
   .get(userController.renderLoginForm)
   .post(
     saveRedirectUrl,
@@ -24,6 +24,10 @@ router.get("/signup", (req, res) => {
     }),
     userController.login
   );
+
+router.get("/wishlist", isLoggedIn, wrapAsync(userController.renderWishlist));
+router.post("/wishlist/:id", wrapAsync(userController.toggleWishlist));
+
 
 
 

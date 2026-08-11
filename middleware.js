@@ -49,7 +49,8 @@ module.exports.validateReview = (req, res, next) => {
   let { error } = reviewSchema.validate(req.body);
   if (error) {
     let errorMsg = error.details.map((el) => el.message).join(",");
-    throw new ExpressError(errorMsg, 400);
+    req.flash("error", errorMsg);
+    return res.redirect(`/listings/${req.params.id}`);
   } else {
     next();
   }

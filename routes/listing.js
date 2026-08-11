@@ -31,6 +31,16 @@ router.route("/")
 // New Route - Show form to create listing
 router.get("/new", isLoggedIn, ListingController.renderNewForm);
 
+// Pretty category route: /listings/:category (only when it matches allowed categories)
+router.get('/:category', wrapAsync(async (req, res, next) => {
+  const allowedCategories = ['beach','mountains','villas','cabins','city','luxury','unique','experiences','homes','services'];
+  const cat = (req.params.category || '').toLowerCase();
+  if (!allowedCategories.includes(cat)) return next();
+  // delegate to index controller with query param
+  req.query.category = cat;
+  return ListingController.index(req, res);
+}));
+
 
 router.route("/:id")
   .get(wrapAsync(ListingController.showListing))

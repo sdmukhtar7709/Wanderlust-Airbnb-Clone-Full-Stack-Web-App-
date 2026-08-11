@@ -27,7 +27,12 @@ const listingSchema = new Schema({
             type:Schema.Types.ObjectId,
             ref: "User"
         }
-
+    ,
+    category: {
+        type: String,
+        enum: ['homes','experiences','services','beach','mountains','villas','cabins','city','luxury','unique'],
+        default: 'homes'
+    }
 
 });
 

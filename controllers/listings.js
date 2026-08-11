@@ -1,7 +1,27 @@
 const Listing = require("../models/listing.js");
+const User = require("../models/user.js");
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  const fullListings = await Listing.find({});
+  const allowedCategories = ['beach','mountains','villas','cabins','city','luxury','unique','experiences'];
+  const category = (req.query.category || '').toLowerCase();
+  if (category && !allowedCategories.includes(category)) {
+    req.flash('error', 'Category not recognized — showing all listings');
+    return res.redirect('/listings');
+  }
+  let wishlistIds = [];
+  if (req.user) {
+    const user = await User.findById(req.user._id).select('wishlist');
+    if (user) {
+      wishlistIds = user.wishlist.map((id) => id.toString());
+    }
+    if (req.session && Array.isArray(req.session.wishlist)) {
+      wishlistIds = Array.from(new Set([...wishlistIds, ...req.session.wishlist.map((id) => id.toString())]));
+    }
+  } else if (req.session && Array.isArray(req.session.wishlist)) {
+    wishlistIds = req.session.wishlist.map((id) => id.toString());
+  }
+  res.render("listings/index.ejs", { allListings: fullListings, selectedCategory: category, wishlistIds });
 }
 
 module.exports.renderNewForm = (req, res) => {
@@ -15,7 +35,12 @@ module.exports.showListing = async (req, res) => {
     req.flash("error", "Cannot find that listing , Listing may be deleted");
     return res.redirect("/listings");
   }
-  res.render("listings/show.ejs", { listing });
+  const locationParts = [listing.location, listing.country].filter(Boolean);
+  const locationQuery = locationParts.length ? locationParts.join(", ") : "";
+  const googleMapsSearchUrl = locationQuery
+    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationQuery)}`
+    : "";
+  res.render("listings/show.ejs", { listing, googleMapsApiKey: GOOGLE_MAPS_API_KEY, locationQuery, googleMapsSearchUrl });
 }
 module.exports.createListing = async (req, res, next) => {
   let url = req.file.path;

@@ -20,7 +20,7 @@ Built with **Node.js, Express, MongoDB, and EJS**, featuring authentication, ima
 - 🔑 **User Authentication** – signup, login, logout with Passport.js  
 - 🏠 **Property Listings** – add, edit, delete your listings  
 - 🖼️ **Image Uploads** – Cloudinary integration  
-- 🗺️ **Map Integration** – Mapbox API  
+- 🗺️ **Map Integration** – Google Maps Embed API  
 - ⭐ **Review & Rating System**  
 - 📱 **Responsive Design** (mobile + desktop)  
 - 🌙 **Light/Dark Mode Toggle**  
@@ -34,7 +34,7 @@ Built with **Node.js, Express, MongoDB, and EJS**, featuring authentication, ima
 - **Database:** MongoDB, Mongoose  
 - **Authentication:** Passport.js, Express-Session  
 - **File Storage:** Cloudinary  
-- **Maps & Geo:** Mapbox  
+- **Maps & Geo:** Google Maps Platform  
 - **Utilities:** dotenv, nodemon  
 
 ---

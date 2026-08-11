@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
   <div class="row justify-content-center">
     <div class="col-lg-8 col-md-10 col-sm-12">
-      <h3>Create a New Listing</h3>
+      <h3>Become a host</h3>
       <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
         <div class="mb-1">
           <label for="title" class="form-label">Title</label>
@@ -57,9 +57,25 @@
           </div>
         </div>
 
+        <div class="mb-2">
+          <label for="category" class="form-label">Category</label>
+          <select name="listing[category]" class="form-select" required>
+            <option value="beach">Beach</option>
+            <option value="mountains">Mountains</option>
+            <option value="villas">Villas</option>
+            <option value="cabins">Cabins</option>
+            <option value="city">City</option>
+            <option value="luxury">Luxury</option>
+            <option value="unique">Unique Stays</option>
+            <option value="experiences">Experiences</option>
+            <option value="homes">Homes (legacy)</option>
+            <option value="services">Services (legacy)</option>
+          </select>
+        </div>
+
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           <a href="/listings" class="btn btn-secondary me-md-2">Cancel</a>
-          <button type="submit" class="btn btn-dark add-btn ">Add Listing</button>
+          <button type="submit" class="btn btn-dark add-btn ">Become a host</button>
           <br>
 
         </div>

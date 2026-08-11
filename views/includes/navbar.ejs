@@ -1,36 +1,443 @@
 <style>
-  .search-btn{
-    background-color: #fe424d;
-    color: #fff;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
+  .premium-navbar {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+    box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+    padding: 0.7rem 1rem;
+    transition: all 0.25s ease;
   }
-  .search-btn:hover{
-    background-color: #fe424d;
-    color: #fff;
-  } 
-  .search-btn i{
-    display: inline;
-    margin-right: 0.5rem;
+
+  .premium-navbar.scrolled {
+    box-shadow: 0 12px 30px rgba(17, 24, 39, 0.12);
+    background: rgba(255, 255, 255, 0.97);
   }
-  .search-input{
-    border-radius: 25px;
-    padding: 0.5rem 3rem 0.5 3rem;
+
+  .premium-navbar .navbar-brand {
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 1.08rem;
+  }
+
+  .premium-navbar .navbar-brand i {
+    color: #fe424d;
+    font-size: 1.25rem;
+  }
+
+  .premium-navbar .nav-link {
+    color: #374151;
+    font-weight: 600;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+  }
+
+  .premium-navbar .nav-link:hover {
+    color: #fe424d;
+    background: rgba(254, 66, 77, 0.08);
+  }
+
+  .search-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: #fff;
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    border-radius: 999px;
+    padding: 0.2rem 0.25rem 0.2rem 0.8rem;
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.06);
+    min-width: min(100%, 340px);
+    max-width: 340px;
+  }
+
+  .search-pill .search-input {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0.4rem 0.2rem;
+    font-size: 0.9rem;
+    background: transparent;
+  }
+
+  .search-btn {
+    background: linear-gradient(135deg, #fe424d 0%, #ff6b6f 100%);
+    color: #fff;
+    border-radius: 999px;
+    padding: 0.42rem 0.8rem;
+    border: none;
+    font-weight: 600;
+    box-shadow: 0 8px 16px rgba(254, 66, 77, 0.2);
+    font-size: 0.9rem;
+  }
+
+  .search-btn:hover {
+    background: linear-gradient(135deg, #f6344f 0%, #ff5b61 100%);
+    color: #fff;
+  }
+
+  .search-btn i {
+    margin-right: 0.4rem;
+  }
+
+  .hamburger-btn {
+    border-radius: 999px;
+    border: 1px solid rgba(17, 24, 39, 0.1);
+    padding: 0.6rem 0.8rem;
+    background: #fff;
+    color: #374151;
+    box-shadow: 0 8px 16px rgba(17, 24, 39, 0.06);
+  }
+
+  .hamburger-btn:hover {
+    background: #f9fafb;
+    color: #111827;
+  }
+
+  .account-drawer {
+    width: min(100vw, 390px);
+    border-left: 1px solid rgba(17, 24, 39, 0.08);
+  }
+
+  .account-drawer .offcanvas-header {
+    padding: 1rem 1rem 0.6rem;
+  }
+
+  .account-drawer .btn-close {
+    box-shadow: none;
+    opacity: 0.7;
+  }
+
+  .account-drawer .btn-close:hover {
+    opacity: 1;
+  }
+
+  .drawer-shell {
+    padding: 0.15rem 1rem 1rem;
+  }
+
+  .account-header {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, rgba(254, 66, 77, 0.12), rgba(255, 255, 255, 0.92));
+    border: 1px solid rgba(254, 66, 77, 0.12);
+    margin-bottom: 1rem;
+  }
+
+  .account-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #fe424d 0%, #ff7a7f 100%);
+    color: #fff;
+    font-size: 1.05rem;
+    box-shadow: 0 12px 24px rgba(254, 66, 77, 0.22);
+    flex: 0 0 auto;
+  }
+
+  .account-meta {
+    min-width: 0;
+  }
+
+  .account-meta h5 {
     font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    color: #111827;
+    line-height: 1.2;
+  }
+
+  .account-meta p {
+    margin: 0.2rem 0 0;
+    color: #6b7280;
+    font-size: 0.92rem;
+    line-height: 1.35;
+  }
+
+  .drawer-divider {
+    margin: 0.95rem 0;
+    border-color: rgba(17, 24, 39, 0.08);
+    opacity: 1;
+  }
+
+  .drawer-section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0 0 0.7rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #9ca3af;
+  }
+
+  .drawer-link,
+  .drawer-action {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    border-radius: 1rem;
+    padding: 0.9rem 1rem;
+    text-decoration: none;
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    background: #fff;
+    color: #111827;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .drawer-link:hover,
+  .drawer-action:hover {
+    transform: translateY(-1px);
+    border-color: rgba(254, 66, 77, 0.22);
+    box-shadow: 0 12px 24px rgba(17, 24, 39, 0.08);
+    color: #111827;
+  }
+
+  .drawer-link i,
+  .drawer-action i {
+    width: 1.1rem;
+    text-align: center;
+    color: #fe424d;
+    flex: 0 0 auto;
+  }
+
+  .drawer-link .link-text,
+  .drawer-action .link-text {
+    flex: 1;
+    text-align: left;
+    font-size: 0.96rem;
+  }
+
+  .drawer-link .link-meta,
+  .drawer-action .link-meta {
+    color: #9ca3af;
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  .drawer-primary {
+    background: linear-gradient(135deg, #fe424d 0%, #ff6b6f 100%);
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 12px 24px rgba(254, 66, 77, 0.18);
+  }
+
+  .drawer-primary:hover {
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 16px 28px rgba(254, 66, 77, 0.24);
+  }
+
+  .drawer-primary i,
+  .drawer-primary .link-meta {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .drawer-secondary {
+    background: #fff;
+  }
+
+  .drawer-group {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .drawer-settings {
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .theme-switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.9rem;
+    padding: 0.95rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(17, 24, 39, 0.08);
+    background: #fff;
+  }
+
+  .theme-switch-copy {
+    min-width: 0;
+  }
+
+  .theme-switch-copy strong {
+    display: block;
+    font-size: 0.96rem;
+    color: #111827;
+    line-height: 1.2;
+  }
+
+  .theme-switch-copy span {
+    display: block;
+    margin-top: 0.18rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  .theme-toggle {
+    position: relative;
+    width: 3.4rem;
+    height: 1.9rem;
+    flex: 0 0 auto;
+  }
+
+  .theme-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .theme-toggle-track {
+    position: absolute;
+    inset: 0;
+    background: #e5e7eb;
+    border-radius: 999px;
+    transition: background 0.2s ease;
+  }
+
+  .theme-toggle-thumb {
+    position: absolute;
+    top: 0.2rem;
+    left: 0.2rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 6px 14px rgba(17, 24, 39, 0.16);
+    display: grid;
+    place-items: center;
+    color: #fe424d;
+    font-size: 0.78rem;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  .theme-toggle input:checked + .theme-toggle-track {
+    background: linear-gradient(135deg, #1f2937, #111827);
+  }
+
+  .theme-toggle input:checked + .theme-toggle-track .theme-toggle-thumb {
+    transform: translateX(1.5rem);
+    color: #fbbf24;
+  }
+
+  .drawer-footer-note {
+    margin-top: 1rem;
+    font-size: 0.84rem;
+    color: #6b7280;
+    text-align: center;
+  }
+
+  .drawer-footer-note strong {
+    color: #111827;
+  }
+
+  body.dark-theme .account-drawer {
+    background: #111827;
+    border-left-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body.dark-theme .account-header,
+  body.dark-theme .drawer-link,
+  body.dark-theme .drawer-action,
+  body.dark-theme .theme-switch-row {
+    background: #1f2937;
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #f9fafb;
+  }
+
+  body.dark-theme .account-header {
+    background: linear-gradient(135deg, rgba(254, 66, 77, 0.16), rgba(31, 41, 55, 0.98));
+  }
+
+  body.dark-theme .account-meta h5,
+  body.dark-theme .theme-switch-copy strong,
+  body.dark-theme .drawer-footer-note strong {
+    color: #f9fafb;
+  }
+
+  body.dark-theme .account-meta p,
+  body.dark-theme .theme-switch-copy span,
+  body.dark-theme .drawer-footer-note,
+  body.dark-theme .drawer-section-label,
+  body.dark-theme .drawer-link .link-meta,
+  body.dark-theme .drawer-action .link-meta {
+    color: #9ca3af;
+  }
+
+  body.dark-theme .drawer-divider {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body.dark-theme .drawer-secondary {
+    background: #1f2937;
+  }
+
+  body.dark-theme .theme-toggle-track {
+    background: #374151;
+  }
+
+  body.dark-theme .drawer-link:hover,
+  body.dark-theme .drawer-action:hover {
+    background: #273244;
+    color: #fff;
+  }
+
+  @media (max-width: 575.98px) {
+    .account-drawer {
+      width: 100vw;
+    }
+
+    .drawer-shell {
+      padding-inline: 0.75rem;
+    }
+
+    .account-header,
+    .theme-switch-row,
+    .drawer-link,
+    .drawer-action {
+      border-radius: 0.95rem;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .premium-navbar .container-fluid {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .search-pill {
+      min-width: 100%;
+      margin-top: 0.65rem;
+    }
   }
 </style>
 
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-md premium-navbar sticky-top">
   <div class="container-fluid">
-    <!-- Left: Brand + Explore -->
     <div class="d-flex align-items-center">
-      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-      <a class="nav-link" href="/listings">Explore</a>
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i> AirHub</a>
+      <a class="nav-link d-none d-md-inline" href="/listings">Explore</a>
     </div>
 
     <!-- Toggler for mobile -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#userSidebar"
+      aria-controls="userSidebar" aria-expanded="false" aria-label="Open account menu">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -45,18 +452,21 @@
 
         <!-- Center: Search -->
         <div class="d-flex justify-content-center flex-fill">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 search-input" type="search" placeholder="Search destinations" aria-label="Search" />
-            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+          <form class="d-flex search-pill" role="search">
+            <input class="form-control search-input" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
           </form>
         </div>
 
         <!-- Right: User Links -->
         <div class="d-flex align-items-center justify-content-end flex-fill">
-          <a class="nav-link" href="/listings/new">Add Listing</a>
-          <button class="btn btn-outline-secondary ms-2 hamburger-btn" type="button" data-bs-toggle="offcanvas"
+          <a class="nav-link" href="/listings/new">Become a host</a>
+          <button class="btn btn-outline-secondary ms-2 hamburger-btn position-relative" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#userSidebar" aria-controls="userSidebar" aria-label="Open user menu">
             <i class="fa-solid fa-bars"></i>
+            <% if (wishlistCount) { %>
+              <span class="hamburger-badge"><%= wishlistCount %></span>
+            <% } %>
           </button>
         </div>
       </div>
@@ -65,59 +475,163 @@
 </nav>
 
 <!-- Offcanvas Sidebar -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
+<div class="offcanvas offcanvas-end account-drawer" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="userSidebarLabel">Account</h5>
+    <h5 class="offcanvas-title mb-0" id="userSidebarLabel">Account</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body d-flex flex-column gap-2">
-    <a class="btn btn-outline-dark w-100" href="/listings">Home</a>
-    <% if(!currUser){ %>
-      <a class="btn btn-outline-dark w-100" href="/login">Log in</a>
-      <a class="btn btn-dark w-100" href="/signup">Register</a>
-    <% } %>
-    <% if(currUser) { %>
-      <a class="btn btn-outline-dark w-100" href="/logout">Logout</a>
-    <% } %>
-    <hr class="my-2">
-    <button id="theme-toggle" class="btn btn-outline-secondary w-100" title="Toggle theme">
-      <i class="fa fa-moon me-1"></i> Theme
-    </button>
+  <div class="offcanvas-body drawer-shell">
+    <div class="account-header">
+      <div class="account-avatar" aria-hidden="true">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div class="account-meta">
+        <% if(currUser) { %>
+          <h5><%= currUser.username %></h5>
+          <p>Manage your trips, saved stays, and account settings.</p>
+        <% } else { %>
+          <h5>Welcome to Wanderlust</h5>
+          <p>Sign in to manage bookings, wishlists, and saved preferences.</p>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="drawer-group">
+      <p class="drawer-section-label">Navigation</p>
+      <a class="drawer-link" href="/listings">
+        <i class="fa-solid fa-house"></i>
+        <span class="link-text">Home</span>
+      </a>
+      <a class="drawer-link" href="/listings/new">
+        <i class="fa-solid fa-circle-plus"></i>
+        <span class="link-text">Become a host</span>
+      </a>
+      <a class="drawer-link" href="#">
+        <i class="fa-solid fa-suitcase-rolling"></i>
+        <span class="link-text">Trips</span>
+        <span class="link-meta">Soon</span>
+      </a>
+      <a class="drawer-link" href="/wishlist">
+        <i class="fa-regular fa-heart"></i>
+        <span class="link-text">Wishlist</span>
+        <% if (wishlistCount) { %>
+          <span class="link-meta"><%= wishlistCount %></span>
+        <% } %>
+      </a>
+      <a class="drawer-link" href="#">
+        <i class="fa-regular fa-circle-question"></i>
+        <span class="link-text">Help Center</span>
+      </a>
+    </div>
+
+    <hr class="drawer-divider">
+
+    <div class="drawer-group">
+      <p class="drawer-section-label">Account</p>
+      <% if(!currUser){ %>
+        <a class="drawer-action drawer-secondary" href="/login">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span class="link-text">Log in</span>
+        </a>
+        <a class="drawer-action drawer-primary" href="/signup">
+          <i class="fa-solid fa-user-plus"></i>
+          <span class="link-text">Register</span>
+          <span class="link-meta">Primary</span>
+        </a>
+      <% } %>
+      <% if(currUser) { %>
+        <a class="drawer-action drawer-secondary" href="/logout">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <span class="link-text">Logout</span>
+        </a>
+      <% } %>
+    </div>
+
+    <hr class="drawer-divider">
+
+    <div class="drawer-settings">
+      <p class="drawer-section-label">Settings</p>
+      <div class="theme-switch-row">
+        <div class="theme-switch-copy">
+          <strong>Theme</strong>
+          <span>Switch between light and dark mode.</span>
+        </div>
+        <label class="theme-toggle" aria-label="Toggle theme">
+          <input id="theme-toggle" type="checkbox">
+          <span class="theme-toggle-track">
+            <span class="theme-toggle-thumb"><i class="fa-solid fa-moon"></i></span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="drawer-footer-note">Powered by <strong>Wanderlust</strong></div>
   </div>
 </div>
 
 <script>
-  // Apply theme from localStorage on page load
-  if (localStorage.getItem('theme') === 'dark') {
+  const navbar = document.querySelector('.premium-navbar');
+
+  const toggleNavbarShadow = () => {
+    if (!navbar) return;
+    if (window.scrollY > 8) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', toggleNavbarShadow);
+  window.addEventListener('load', toggleNavbarShadow);
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggleIcon = themeToggle ? themeToggle.querySelector('i') : null;
+  const savedTheme = localStorage.getItem('theme');
+
+  const syncThemeState = (isDark) => {
+    if (themeToggle) {
+      themeToggle.checked = isDark;
+    }
+    if (themeToggleIcon) {
+      themeToggleIcon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+    }
+  };
+
+  if (savedTheme === 'dark') {
     document.body.classList.add('dark-theme');
   }
 
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    const body = document.body;
-    const isDark = body.classList.toggle('dark-theme');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    document.querySelectorAll('.navbar').forEach(el => {
-      el.classList.toggle('dark-theme', isDark);
+  syncThemeState(document.body.classList.contains('dark-theme'));
+
+  if (themeToggle) {
+    themeToggle.addEventListener('change', function() {
+      const body = document.body;
+      const isDark = body.classList.toggle('dark-theme');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.querySelectorAll('.navbar').forEach(el => {
+        el.classList.toggle('dark-theme', isDark);
+      });
+      document.querySelectorAll('.card').forEach(el => {
+        el.classList.toggle('dark-theme', isDark);
+      });
+      document.querySelectorAll('.listing-card').forEach(el => {
+        el.classList.toggle('dark-theme', isDark);
+      });
+      document.querySelectorAll('.nav-link').forEach(el => {
+        el.classList.toggle('dark-theme', isDark);
+      });
+      document.querySelectorAll('.card-body').forEach(el => {
+        el.classList.toggle('dark-theme', isDark);
+      });
+      document.querySelectorAll('.card-text').forEach(el => {
+        el.classList.toggle('dark-theme', isDark);
+      });
+      document.querySelectorAll('.f-info').forEach(el => {
+        el.classList.toggle('dark-theme', isDark);
+      });
+      syncThemeState(isDark);
     });
-    document.querySelectorAll('.card').forEach(el => {
-      el.classList.toggle('dark-theme', isDark);
-    });
-    document.querySelectorAll('.listing-card').forEach(el => {
-      el.classList.toggle('dark-theme', isDark);
-    });
-    document.querySelectorAll('.nav-link').forEach(el => {
-      el.classList.toggle('dark-theme', isDark);
-    });
-    document.querySelectorAll('.card-body').forEach(el => {
-      el.classList.toggle('dark-theme', isDark);
-    });
-    document.querySelectorAll('.card-text').forEach(el => {
-      el.classList.toggle('dark-theme', isDark);
-    });
-    document.querySelectorAll('.f-info').forEach(el => {
-      el.classList.toggle('dark-theme', isDark);
-    });
-  });
+  }
 
   // Also apply dark-theme classes to elements on page load
   window.addEventListener('DOMContentLoaded', function() {

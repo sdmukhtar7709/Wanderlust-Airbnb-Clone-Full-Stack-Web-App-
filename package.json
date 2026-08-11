@@ -33,7 +33,9 @@
     "path-to-regexp": "^6.2.1",
     "uuid": "^13.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-.git"

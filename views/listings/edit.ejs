@@ -63,6 +63,21 @@
             Location cannot be blank
           </div>
           </div>
+          <div class="mb-2">
+            <label for="category" class="form-label">Category</label>
+            <select name="listing[category]" class="form-select" required>
+              <option value="beach" <%= listing.category==='beach' ? 'selected' : '' %>>Beach</option>
+              <option value="mountains" <%= listing.category==='mountains' ? 'selected' : '' %>>Mountains</option>
+              <option value="villas" <%= listing.category==='villas' ? 'selected' : '' %>>Villas</option>
+              <option value="cabins" <%= listing.category==='cabins' ? 'selected' : '' %>>Cabins</option>
+              <option value="city" <%= listing.category==='city' ? 'selected' : '' %>>City</option>
+              <option value="luxury" <%= listing.category==='luxury' ? 'selected' : '' %>>Luxury</option>
+              <option value="unique" <%= listing.category==='unique' ? 'selected' : '' %>>Unique Stays</option>
+              <option value="experiences" <%= listing.category==='experiences' ? 'selected' : '' %>>Experiences</option>
+              <option value="homes" <%= listing.category==='homes' ? 'selected' : '' %>>Homes (legacy)</option>
+              <option value="services" <%= listing.category==='services' ? 'selected' : '' %>>Services (legacy)</option>
+            </select>
+          </div>
           <br>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           <a href="/listings" class="btn btn-secondary me-md-2">Cancel</a>

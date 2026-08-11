@@ -78,6 +78,12 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
+  res.locals.wishlistCount = 0;
+  if (req.user && req.user.wishlist) {
+    res.locals.wishlistCount = req.user.wishlist.length;
+  } else if (req.session && Array.isArray(req.session.wishlist)) {
+    res.locals.wishlistCount = req.session.wishlist.length;
+  }
   next();
 });
 
