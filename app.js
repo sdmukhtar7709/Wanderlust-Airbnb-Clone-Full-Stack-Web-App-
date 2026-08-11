@@ -117,6 +117,16 @@ app.use((req, res, next) => {
 
 
 // ===============================
+// STATIC FILES
+// ===============================
+
+app.use(
+  express.static(
+    path.join(__dirname, "public")
+  )
+);
+
+// ===============================
 // ROUTES
 // ===============================
 
@@ -145,17 +155,6 @@ app.set("view engine", "ejs");
 app.set(
   "views",
   path.join(__dirname, "views")
-);
-
-
-// ===============================
-// STATIC FILES
-// ===============================
-
-app.use(
-  express.static(
-    path.join(__dirname, "public")
-  )
 );
 
 
