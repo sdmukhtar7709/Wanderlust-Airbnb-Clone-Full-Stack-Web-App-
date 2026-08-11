@@ -25,7 +25,7 @@ module.exports.signup = async (req, res) => {
                 await user.save();
                 delete req.session.wishlist;
             }
-            req.flash("success", "Welcome to Wanderlust");
+            req.flash("success", "Welcome to Destino");
             const redirectUrl = res.locals.redirectUrl || "/listings";
             res.redirect(redirectUrl);
         })
@@ -94,7 +94,7 @@ module.exports.login = async (req, res) => {
       await user.save();
       delete req.session.wishlist;
     }
-    req.flash("success", "Welcome to Wanderlust! You Are Logged In");
+    req.flash("success", "Welcome to Destino! You are logged in.");
     const redirectUrl = res.locals.redirectUrl || "/listings";
     res.redirect(redirectUrl);
 }

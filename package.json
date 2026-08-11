@@ -13,6 +13,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "Destino vacation rental application",
   "dependencies": {
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
@@ -38,11 +39,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-.git"
+    "url": "git+https://github.com/sdmukhtar7709/Destino-Airbnb-Clone-Full-Stack-Web-App-.git"
   },
   "bugs": {
-    "url": "https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-/issues"
+    "url": "https://github.com/sdmukhtar7709/Destino-Airbnb-Clone-Full-Stack-Web-App-/issues"
   },
-  "homepage": "https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-#readme",
+  "homepage": "https://github.com/sdmukhtar7709/Destino-Airbnb-Clone-Full-Stack-Web-App-#readme",
   "description": ""
 }

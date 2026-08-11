@@ -99,17 +99,18 @@ AIRHUB/
 
 ## 🔧 Environment Setup
 
-Create a `.env` file with the following values:
+Create a `.env` file with the following values. Render will provide `PORT` automatically in production.
 
 ```env
-ATLASDB_URL=<your-mongodb-connection-string>
+ATLASDB_URL=<your-mongodb-atlas-connection-string>
 SECRET=<your-session-secret>
 CLOUDINARY_CLOUD_NAME=<cloudinary-cloud-name>
 CLOUDINARY_KEY=<cloudinary-api-key>
 CLOUDINARY_SECRET=<cloudinary-api-secret>
+NODE_ENV=production
 ```
 
-If you are using a local MongoDB instance, set `ATLASDB_URL` or `MONGO_URL` accordingly.
+For local development, use the same variables and point `ATLASDB_URL` to your MongoDB instance.
 
 ---
 
