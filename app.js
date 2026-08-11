@@ -121,14 +121,18 @@ app.use((req, res, next) => {
 // ===============================
 
 app.use("/listings", listingsRouter);
-
-app.use(
-  "/listings/:id/reviews",
-  reviewsRouter
-);
-
+app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
+// Root route
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
+// 404 Handler
+app.all("*", (req, res, next) => {
+    next(new ExpressError("Page Not Found", 404));
+});
 
 // ===============================
 // VIEW ENGINE
