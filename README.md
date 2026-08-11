@@ -1,63 +1,48 @@
-# 🌍 AIRBNB  
+﻿# 🌍 Destino
 
-A **full-stack web application** for listing and discovering places to stay, inspired by **Airbnb**.  
-Built with **Node.js, Express, MongoDB, and EJS**, featuring authentication, image uploads, maps, and reviews.  
-
----
-
-## 📊 Badges  
-
-![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)  
-![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)  
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)  
-![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)  
-![Passport.js](https://img.shields.io/badge/Passport.js-34E27A?style=for-the-badge&logo=passport&logoColor=black)  
+Destino is a modern full-stack vacation rental web application built with **Node.js**, **Express**, **MongoDB**, and **EJS**. The app lets travelers browse stays, save favorites, post reviews, and hosts manage listings with an intuitive UI.
 
 ---
 
-## 🚀 Features  
+## 📘 About Destino
 
-- 🔑 **User Authentication** – signup, login, logout with Passport.js  
-- 🏠 **Property Listings** – add, edit, delete your listings  
-- 🖼️ **Image Uploads** – Cloudinary integration  
-- 🗺️ **Map Integration** – Google Maps Embed API  
-- ⭐ **Review & Rating System**  
-- 📱 **Responsive Design** (mobile + desktop)  
-- 🌙 **Light/Dark Mode Toggle**  
+Destino helps users discover and save rental homes, cottages, and apartments with a polished listing experience powered by session-aware wishlists and account-based storage.
+
+Key functionality includes:
+- pre-login wishlist support for guest users
+- wishlist merge after signup/login
+- listing creation, editing, and deletion for hosts
+- review and rating system for stays
+- responsive Bootstrap interface with custom styling
+
+---
+
+## 🚀 Features
+
+- 🔑 **Authentication** – User signup, login, logout with Passport.js
+- 💖 **Wishlist** – Save listings to wishlist before login and keep them after authentication
+- 🏠 **Listing Management** – Hosts can create, edit, and delete listings
+- 🖼️ **Image Uploads** – Cloudinary-powered photo upload support
+- ⭐ **Reviews & Ratings** – Submit reviews and ratings for listings
+- 📱 **Responsive Design** – Great on both mobile and desktop
+- 🧭 **Navigation Drawer** – Quick access to profile, wishlist, and account actions
+- ⚡ **Flash Messages** – Auto-dismiss notifications for success and error feedback
 
 ---
 
-## 🛠 Tech Stack  
+## 🧩 Tech Stack
 
-- **Backend:** Node.js, Express.js  
-- **Frontend:** EJS, Bootstrap, Custom CSS  
-- **Database:** MongoDB, Mongoose  
-- **Authentication:** Passport.js, Express-Session  
-- **File Storage:** Cloudinary  
-- **Maps & Geo:** Google Maps Platform  
-- **Utilities:** dotenv, nodemon  
+- **Backend:** Node.js, Express
+- **Frontend:** EJS templates, Bootstrap, JavaScript, CSS
+- **Database:** MongoDB with Mongoose
+- **Auth:** Passport.js, passport-local-mongoose
+- **Storage:** Cloudinary for image handling
+- **Session store:** connect-mongo
+- **Validation:** Joi
 
 ---
-## 🛠️ Technologies & Packages Used:
-- **MongoDB**
-- **Express.js**
-- **Node.js**
-- **Passport.js for Authentication**
-- **Cloudinary for Image Storage**
-- **Connect Flash for Flash Messages**
-- **Connect Mongo for Session Storage**
-- **Cookie Parser for Parsing Cookies**
-- **Dotenv for Environment Variables**
-- **EJS for Template Rendering**
-- **Express Session for Session Handling**
-- **Joi for Data Validation**
-- **Mongoose for MongoDB Object Modeling**
-- **Multer for File Uploads**
-- **Passport Local for Local Authentication**
-- **Passport Local Mongoose for Mongoose-Specific Authentication**
----
 
-## 📁 Project Structure
+## 📦 Project Structure
 
 ```
 AIRHUB/
@@ -83,7 +68,6 @@ AIRHUB/
 │   │   ├── rating.css
 │   │   └── style.css
 │   └── js/
-│       ├── .js
 │       ├── script.js
 │       └── search-listings.js
 ├── routes/
@@ -94,58 +78,87 @@ AIRHUB/
 │   ├── ExpressError.js
 │   └── wrapAsync.js
 └── views/
-	├── error.ejs
-	├── includes/
-	│   ├── flash.ejs
-	│   ├── footer.ejs
-	│   └── navbar.ejs
-	├── layouts/
-	│   └── boilerplate.ejs
-	├── listings/
-	│   ├── edit.ejs
-	│   ├── index.ejs
-	│   ├── new.ejs
-	│   └── show.ejs
-	└── users/
-		├── login.ejs
-		└── signup.ejs
+    ├── error.ejs
+    ├── includes/
+    │   ├── flash.ejs
+    │   ├── footer.ejs
+    │   └── navbar.ejs
+    ├── layouts/
+    │   └── boilerplate.ejs
+    ├── listings/
+    │   ├── edit.ejs
+    │   ├── index.ejs
+    │   ├── new.ejs
+    │   └── show.ejs
+    └── users/
+        ├── login.ejs
+        └── signup.ejs
 ```
-
-
-## 📸 Screenshots  
-
-(Add actual screenshots here once you have them)  
-
-![Home Page](https://via.placeholder.com/1000x500.png?text=Home+Page+Screenshot)  
-![Listing Page](https://via.placeholder.com/1000x500.png?text=Listing+Page+Screenshot)  
-![Dark Mode](https://via.placeholder.com/1000x500.png?text=Dark+Mode+Screenshot)  
 
 ---
 
-## ⚡ Getting Started  
+## 🔧 Environment Setup
 
-### 1️⃣ Clone the repository  
+Create a `.env` file with the following values:
 
-git clone https://github.com/sdmukhtar7709/Wanderlust-Airbnb-Clone-Full-Stack-Web-App-
-cd AIRHUB
+```env
+ATLASDB_URL=<your-mongodb-connection-string>
+SECRET=<your-session-secret>
+CLOUDINARY_CLOUD_NAME=<cloudinary-cloud-name>
+CLOUDINARY_KEY=<cloudinary-api-key>
+CLOUDINARY_SECRET=<cloudinary-api-secret>
+```
 
+If you are using a local MongoDB instance, set `ATLASDB_URL` or `MONGO_URL` accordingly.
+
+---
+
+## 🚀 Run Locally
+
+Install dependencies and start the app:
+
+```bash
 npm install
+npm run dev
+```
 
-## 📌 Useful Commands
-Initialize project: npm init -y
-Install dependencies: npm install
-Run server with nodemon: npx nodemon app.js
+Then open `http://localhost:8080`.
 
+---
+
+## 💡 Useful Commands
+
+- `npm install` — install dependencies
+- `npm run dev` — start the app with nodemon
+- `node app.js` — run the server directly
+
+---
+
+## 📌 Notes
+
+- Guest wishlist items are stored in session until login/signup.
+- On login/signup, session wishlist items are merged into the user account.
+- Flash notifications close automatically after a few seconds.
+- The app currently uses Bootstrap with custom styles for a modern listing experience.
+
+---
 
 ## 🌐 Demo
 
-Take a look at your app in action:  
-👉 [Live Demo — Listings Page](https://wanderlust-airbnb-clone-full-stack-web.onrender.com/listings)  
+Live demo placeholder: `https://destino-airbnb-clone-full-stack-web.onrender.com/listings`
+
+---
 
 ## 🌟 Future Improvements
-Improve maps feature
-Implement advanced search & filters
-Improve UI/UX with React frontend
-dd booking & payment system (Stripe/PayPal)
 
-```sh
+- Add booking and payment workflow (Stripe/PayPal)
+- Add advanced filters and search
+- Add user profile and booking history pages
+- Add map-based property search
+- Improve listing details and host dashboard
+
+---
+
+## 🤝 Contribution
+
+Contributions are welcome! Please open an issue or submit a pull request with enhancements.
